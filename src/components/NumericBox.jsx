@@ -101,25 +101,48 @@ export class NumericBox extends Component {
   }
 
   render() {
-    const { lowNormal, hiNormal } = this.props;
-    if (NumericBoxDesigner.getRange(lowNormal, hiNormal) !== '') {
-      return (
+    const { lowNormal, hiNormal, properties } = this.props;
+
+    const displayAsSlider = properties.slider === true;
+
+
+    /*if (NumericBoxDesigner.getRange(lowNormal, hiNormal) !== '') {
+
+      if(displayAsSlider) {
         <div className="fl">
-          <input
-            className={ classNames({ 'form-builder-error': this.state.hasErrors },
-              { 'form-builder-warning': this.state.hasWarnings }) }
-            disabled={ !this.props.enabled }
-            onChange={ (e) => this.handleChange(e) }
-            ref={(elem) => {
-              this.input = elem;
-            }}
-            step="any" type="number"
-          />
-          <span className="form-builder-valid-range">
-            {NumericBoxDesigner.getRange(lowNormal, hiNormal)}
-          </span>
-        </div>
-      );
+            <input
+              className={ classNames({ 'form-builder-error': this.state.hasErrors },
+                { 'form-builder-warning': this.state.hasWarnings }) }
+              disabled={ !this.props.enabled }
+              onChange={ (e) => this.handleChange(e) }
+              ref={(elem) => {
+                this.input = elem;
+              }}
+              step="any" type="range"
+            />
+            <span className="form-builder-valid-range">
+              {NumericBoxDesigner.getRange(lowNormal, hiNormal)}
+            </span>
+          </div>
+      } else {
+        return (
+          <div className="fl">
+            <input
+              className={ classNames({ 'form-builder-error': this.state.hasErrors },
+                { 'form-builder-warning': this.state.hasWarnings }) }
+              disabled={ !this.props.enabled }
+              onChange={ (e) => this.handleChange(e) }
+              ref={(elem) => {
+                this.input = elem;
+              }}
+              step="any" type="number"
+            />
+            <span className="form-builder-valid-range">
+              {NumericBoxDesigner.getRange(lowNormal, hiNormal)}
+            </span>
+          </div>
+        );
+      }
     }
     return (
       <div className="fl">
@@ -132,6 +155,21 @@ export class NumericBox extends Component {
             this.input = elem;
           }}
           step="any" type="number"
+        />
+      </div>
+    );*/
+
+    return (
+      <div className="fl">
+        <input
+          className={ classNames({ 'form-builder-error': this.state.hasErrors,
+            'computed-value': this.isComputed() }) }
+          disabled={ !this.props.enabled }
+          onChange={ (e) => this.handleChange(e) }
+          ref={(elem) => {
+            this.input = elem;
+          }}
+          step="any" type="range"
         />
       </div>
     );

@@ -1,0 +1,4 @@
+services:
+  frontend:
+    image: johnny94/form-controls-env
+    build: .
