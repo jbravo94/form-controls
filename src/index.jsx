@@ -1,7 +1,7 @@
 export { Container } from 'components/Container.jsx';
 export { ObsControl } from 'components/ObsControl.jsx';
 export { Label } from 'components/Label.jsx';
-export { ImageLabel } from 'components/ImageLabel.jsx';
+export { ImageView } from 'components/ImageView.jsx';
 export { TextBox } from 'components/TextBox.jsx';
 import { TextBox } from 'components/TextBox.jsx';
 export { NumericBox } from 'components/NumericBox.jsx';
@@ -50,6 +50,8 @@ export { ImageDesigner } from 'components/designer/Image.jsx';
 export { VideoDesigner } from 'components/designer/Video.jsx';
 export { LocationDesigner } from 'components/designer/Location.jsx';
 export { ProviderDesigner } from 'components/designer/Provider.jsx';
+export { ImageViewDesigner } from 'components/designer/ImageView.jsx';
+
 
 // -------------------------- helpers ---------------------
 

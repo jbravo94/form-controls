@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 import ComponentStore from 'src/helpers/componentStore';
 import { IntlShape } from 'react-intl';
 
-export class ImageLabel extends Component {
+export class ImageView extends Component {
 
   _getUnits(units) {
     return units ? ` ${units}` : '';
   }
 
-  _computeImageLabelContainerStyle(position) {
+  _computeImageViewContainerStyle(position) {
 
     let textAlignPosition;
 
@@ -35,7 +35,7 @@ export class ImageLabel extends Component {
     };
   }
 
-  _computeImageLabelStyle(maxHeight, maxWidth) {
+  _computeImageViewStyle(maxHeight, maxWidth) {
 
     const maxHeightPercentage = isNaN(maxHeight) ? 100 : maxHeight;
     const maxWidthPercentage = isNaN(maxWidth) ? 100 : maxWidth;
@@ -53,15 +53,15 @@ export class ImageLabel extends Component {
 
     const disableClass = enabled ? '' : 'disabled-label';
     return (<div
-      className={`image-label-container ${disableClass}`} style={this._computeImageLabelContainerStyle(position)}
+      className={`image-label-container ${disableClass}`} style={this._computeImageViewContainerStyle(position)}
     >
-      <img className="image-label" src={imageUrl} style={this._computeImageLabelStyle(maxHeight, maxWidth)} />
+      <img className="image-label" src={imageUrl} style={this._computeImageViewStyle(maxHeight, maxWidth)} />
     </div>
     );
   }
 }
 
-ImageLabel.propTypes = {
+ImageView.propTypes = {
   enabled: PropTypes.bool,
   hidden: PropTypes.bool,
   intl: IntlShape,
@@ -76,10 +76,10 @@ ImageLabel.propTypes = {
   }),
 };
 
-ImageLabel.defaultProps = {
+ImageView.defaultProps = {
   hidden: false,
   enabled: true,
 };
 
-ComponentStore.registerComponent('imageLabel', ImageLabel);
+ComponentStore.registerComponent('imageView', ImageView);
 /* eslint-enable react/prefer-stateless-function */
