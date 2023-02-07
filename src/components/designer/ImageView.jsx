@@ -94,7 +94,7 @@ export class ImageViewDesigner extends Component {
           {this.showDeleteButton()}
           {this.displayLabel()}
           {this.showAddMore()}
-          <div className="obsGroup-controls">
+          <div className="obsGroup-controls" style={{display: "none"}}>
             <Grid
               controls={ controls }
               dragSourceCell={this.props.dragSourceCell}
@@ -173,9 +173,24 @@ const descriptor = {
         dataType: 'complex',
         attributes: [
           {
-            name: 'addMore',
-            dataType: 'boolean',
-            defaultValue: false,
+            name: 'Position',
+            elementType: 'dropdown',
+            defaultValue: 'left',
+            options: [
+              'left',
+              'center',
+              'right',
+            ],
+          },
+          {
+            name: 'Max Width',
+            elementType: 'number',
+            defaultValue: 100,
+          },
+          {
+            name: 'Max Height',
+            elementType: 'number',
+            defaultValue: 100,
           },
         ],
       },
