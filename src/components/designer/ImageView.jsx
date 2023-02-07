@@ -124,6 +124,7 @@ ImageViewDesigner.propTypes = {
   metadata: PropTypes.shape({
     displayType: PropTypes.string,
     id: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     label: PropTypes.object,
     properties: PropTypes.shape({
       location: PropTypes.shape({
@@ -153,6 +154,11 @@ const descriptor = {
         defaultValue: 'imageView',
       },
       {
+        name: 'value',
+        dataType: 'text',
+        defaultValue: 'ImageView',
+      },
+      {
         name: 'label',
         dataType: 'complex',
         attributes: [
@@ -164,7 +170,7 @@ const descriptor = {
           {
             name: 'value',
             dataType: 'text',
-            defaultValue: 'Image View',
+            defaultValue: 'ImageView',
           },
         ],
       },
@@ -173,7 +179,7 @@ const descriptor = {
         dataType: 'complex',
         attributes: [
           {
-            name: 'Position',
+            name: 'position',
             elementType: 'dropdown',
             defaultValue: 'left',
             options: [
@@ -183,12 +189,12 @@ const descriptor = {
             ],
           },
           {
-            name: 'Max Width',
+            name: 'maxWidth',
             elementType: 'number',
             defaultValue: 100,
           },
           {
-            name: 'Max Height',
+            name: 'maxHeight',
             elementType: 'number',
             defaultValue: 100,
           },

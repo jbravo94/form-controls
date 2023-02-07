@@ -47,7 +47,7 @@ export class ImageView extends Component {
   }
 
   render() {
-    const { intl, enabled, metadata: { value, units, maxHeight, maxWidth, position } } = this.props;
+    const { intl, enabled, metadata: { label: { value }, properties: { maxHeight, maxWidth, position } } } = this.props;
 
     const imageUrl = `/bahmni/images/clinical_forms/${value}`;
 
@@ -68,11 +68,10 @@ ImageView.propTypes = {
   metadata: PropTypes.shape({
     type: PropTypes.string.isRequired,
     units: PropTypes.string,
+    label: PropTypes.object,
     value: PropTypes.string.isRequired,
     translationKey: PropTypes.string,
-    maxHeight: PropTypes.number,
-    maxWidth: PropTypes.number,
-    position: PropTypes.string
+    properties: PropTypes.object,
   }),
 };
 
