@@ -5,8 +5,9 @@ ENV NVM_DIR /root/.nvm
 ENV NODE_VERSION 10.1.0
 
 RUN yum install -y libpng12 make gcc-c++
-#RUN yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-#RUN yum install -y git
+
+RUN yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+RUN yum install -y git
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
