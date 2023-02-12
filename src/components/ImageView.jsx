@@ -8,10 +8,6 @@ import { IntlShape } from 'react-intl';
 
 export class ImageView extends Component {
 
-  _getUnits(units) {
-    return units ? ` ${units}` : '';
-  }
-
   _computeImageViewContainerStyle(position) {
 
     let textAlignPosition;
@@ -67,9 +63,7 @@ ImageView.propTypes = {
   intl: IntlShape,
   metadata: PropTypes.shape({
     type: PropTypes.string.isRequired,
-    units: PropTypes.string,
     label: PropTypes.object,
-    value: PropTypes.string.isRequired,
     translationKey: PropTypes.string,
     properties: PropTypes.object,
   }),
