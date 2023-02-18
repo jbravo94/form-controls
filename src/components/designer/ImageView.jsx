@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ComponentStore from 'src/helpers/componentStore';
 import { SectionMapper } from '../../mapper/SectionMapper';
-import { GridDesigner as Grid } from 'components/designer/Grid.jsx';
 import { LabelDesigner } from 'components/designer/Label.jsx';
-import { AddMoreDesigner } from 'components/designer/AddMore.jsx';
-import find from 'lodash/find';
 import { CellDesigner } from 'components/designer/Cell.jsx';
 
 export class ImageViewDesigner extends Component {
@@ -14,22 +11,13 @@ export class ImageViewDesigner extends Component {
     super(props);
     this.metadata = props.metadata;
     this.mapper = new SectionMapper();
-    this.storeGridRef = this.storeGridRef.bind(this);
     this.storeLabelRef = this.storeLabelRef.bind(this);
     this.deleteControl = this.deleteControl.bind(this);
   }
 
-  getJsonDefinition() {
-    if (!this.gridRef) return undefined;
-    const controls = this.gridRef.getControls();
+   getJsonDefinition() {
     const labelJsonDefinition = this.labelControl && this.labelControl.getJsonDefinition();
-    return Object.assign({}, this.props.metadata, { controls }, { label: labelJsonDefinition });
-  }
-
-  storeGridRef(ref) {
-    if (ref) {
-      this.gridRef = ref;
-    }
+    return Object.assign({}, this.props.metadata, {}, { label: labelJsonDefinition });
   }
 
   storeLabelRef(ref) {
@@ -69,23 +57,11 @@ export class ImageViewDesigner extends Component {
     event.stopPropagation();
   }
 
-  showAddMore() {
-    const { properties } = this.props.metadata;
-    const isAddMoreEnabled = find(properties, (value, key) => (key === 'addMore' && value));
-    if (isAddMoreEnabled) {
-      return (
-        <AddMoreDesigner />
-      );
-    }
-    return null;
-  }
-
   render() {
     const { metadata } = this.props;
-    const controls = metadata.controls || [];
     return (
-        <fieldset
-          className="form-builder-fieldset"
+        <div
+          className="control-wrapper-content"
           onClick={(event) => {
             this.stopEventPropagation(event);
             this.props.onSelect(event, metadata);
@@ -93,22 +69,7 @@ export class ImageViewDesigner extends Component {
         >
           {this.showDeleteButton()}
           {this.displayLabel()}
-          {this.showAddMore()}
-          <div className="obsGroup-controls" style={{display: "none"}}>
-            <Grid
-              controls={ controls }
-              dragSourceCell={this.props.dragSourceCell}
-              idGenerator={this.props.idGenerator}
-              isBeingDragged ={this.props.isBeingDragged}
-              loadFormJson={this.props.loadFormJson}
-              minRows={2}
-              onControlDrop ={this.props.onControlDrop}
-              ref={ this.storeGridRef }
-              showDeleteButton
-              wrapper={this.props.wrapper}
-            />
-          </div>
-        </fieldset>
+        </div>
     );
   }
 }
@@ -137,7 +98,6 @@ ImageViewDesigner.propTypes = {
   onControlDrop: PropTypes.func,
   onSelect: PropTypes.func.isRequired,
   showDeleteButton: PropTypes.bool,
-  wrapper: PropTypes.func.isRequired,
 };
 
 const descriptor = {
