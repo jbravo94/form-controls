@@ -10,7 +10,7 @@ Form Controls
 ### Setup Steps
 
 1. Install nvm
-2. Install node
+2. Install node (Tested version: 10.X.Y)
 3. Install yarn - https://yarnpkg.com/en/docs/install
 
 ### Build
@@ -19,9 +19,8 @@ Form Controls
 2. Build - `yarn build`
 3. Test - `yarn test`
 
+Note: OS library libpng12 maybe needs to be installed in order to make dependency installation succeed. 
+
+### Documentation
 
 https://bahmni.atlassian.net/wiki/spaces/BAH/pages/714276866/Creating+a+Sample+Form-Controls+Property+Component
-
-https://github.com/Bahmni/openmrs-module-bahmniapps/blob/f45ae4299ee82d42a8d1c3601f8a294a24e34feb/ui/app/common/concept-set/views/conceptSetGroupSection.html
-https://github.com/Bahmni/form-controls/blob/master/src/components/ObsControl.jsx#L222
-https://github.com/Bahmni/form-controls/blob/master/src/helpers/formRenderer.js
