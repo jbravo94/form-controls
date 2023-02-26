@@ -67,7 +67,12 @@ export class ImageViewDesigner extends Component {
           }}
         >
           {this.showDeleteButton()}
-          {this.displayLabel()}
+          <table class="image-view">
+            <tr>
+              <td><strong>Filename:</strong></td>
+              <td>{this.displayLabel()}</td>
+            </tr>
+          </table>
         </div>
     );
   }

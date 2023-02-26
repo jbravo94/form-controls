@@ -86,8 +86,16 @@ export class LinkDesigner extends Component {
           }}
         >
           {this.showDeleteButton()}
-          {this.displayNameLabel()}
-          {this.displayUrlLabel()}
+          <table class="link">
+            <tr>
+              <td><strong>Display Name:</strong></td>
+              <td>{this.displayNameLabel()}</td>
+            </tr>
+            <tr>
+              <td><strong>Url:</strong></td>
+              <td>{this.displayUrlLabel()}</td>
+            </tr>
+          </table>
         </div>
     );
   }

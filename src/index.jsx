@@ -26,8 +26,6 @@ export { FreeTextAutoComplete } from 'components/FreeTextAutoComplete.jsx';
 //  -----------designer components------------------
 
 export { LabelDesigner } from 'components/designer/Label.jsx';
-export { LinkDesigner } from 'components/designer/Link.jsx';
-export { ImageViewDesigner } from 'components/designer/ImageView.jsx';
 export { ObsControlDesigner } from 'components/designer/ObsControlDesigner.jsx';
 export { TextBoxDesigner } from 'components/designer/TextBoxDesigner.jsx';
 export { NumericBoxDesigner } from 'components/designer/NumericBoxDesigner.jsx';
@@ -45,6 +43,8 @@ export { DateDesigner } from 'components/designer/Date.jsx';
 export { DateTimeDesigner } from 'components/designer/DateTime.jsx';
 export { SectionDesigner } from 'components/designer/Section.jsx';
 export { TableDesigner } from 'components/designer/TableDesigner.jsx';
+export { LinkDesigner } from 'components/designer/Link.jsx';
+export { ImageViewDesigner } from 'components/designer/ImageView.jsx';
 export { ImageDesigner } from 'components/designer/Image.jsx';
 export { VideoDesigner } from 'components/designer/Video.jsx';
 export { LocationDesigner } from 'components/designer/Location.jsx';
