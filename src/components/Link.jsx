@@ -5,20 +5,33 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ComponentStore from 'src/helpers/componentStore';
 import { IntlShape } from 'react-intl';
+import classNames from 'classnames';
 
 export class Link extends Component {
 
   render() {
     const { intl, enabled, metadata: { label: { value: name}, link: { value: url } } } = this.props;
 
-    const disableClass = enabled ? '' : 'disabled-label';
-    return (<div
-      className={`image-view-container ${disableClass}`}
-    >
-      
-      {name}
-      {url}
-    </div>
+    return (
+      <a class="fa link" href={url} target="_blank">
+              {name}
+              <i class="fa fa-external-link"></i>
+            </a>
+      /*
+      <div className={classNames('form-field-wrap clearfix')}>
+        <div className="form-field-content-wrap">
+          <div className="label-wrap fl">
+            Link
+          </div>
+          <div className={classNames('obs-control-field')}>
+            <a class="fa link" href={url} target="_blank">
+              {name}
+              <i class="fa fa-external-link"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      */
     );
   }
 }

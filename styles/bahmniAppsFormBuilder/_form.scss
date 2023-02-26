@@ -620,3 +620,14 @@ input.computed-value{
   border: 0 !important;
   pointer-events: none;
 }
+
+a.link {
+  background-color: $bahmniSecondaryColor;
+  color: white;
+  box-shadow: 1px 1px 1px #ccc;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: inherit;
+  padding: 5px 5px 5px 10px;
+  font-weight: 800;
+}
