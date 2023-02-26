@@ -1,0 +1,4 @@
+{
+    "image": "johnny94/form-controls-env",
+    "forwardPorts": [9876]
+  }

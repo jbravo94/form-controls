@@ -4,32 +4,51 @@ import ComponentStore from 'src/helpers/componentStore';
 import { SectionMapper } from '../../mapper/SectionMapper';
 import { LabelDesigner } from 'components/designer/Label.jsx';
 
-export class ImageViewDesigner extends Component {
+export class LinkDesigner extends Component {
 
   constructor(props) {
     super(props);
     this.metadata = props.metadata;
     this.mapper = new SectionMapper();
-    this.storeLabelRef = this.storeLabelRef.bind(this);
+    this.storeNameLabelRef = this.storeNameLabelRef.bind(this);
+    this.storeUrlLabelRef = this.storeUrlLabelRef.bind(this);
     this.deleteControl = this.deleteControl.bind(this);
   }
 
    getJsonDefinition() {
-    const labelJsonDefinition = this.labelControl && this.labelControl.getJsonDefinition();
-    return Object.assign({}, this.props.metadata, {}, { label: labelJsonDefinition });
+    const namelabelJsonDefinition = this.nameLabelControl && this.nameLabelControl.getJsonDefinition();
+    const urllabelJsonDefinition = this.urlLabelControl && this.urlLabelControl.getJsonDefinition();
+
+    return Object.assign({}, this.props.metadata, {}, { label: namelabelJsonDefinition, link: urllabelJsonDefinition });
   }
 
-  storeLabelRef(ref) {
-    this.labelControl = ref;
+  storeNameLabelRef(ref) {
+    this.nameLabelControl = ref;
   }
 
-  displayLabel() {
+  storeUrlLabelRef(ref) {
+    this.urlLabelControl = ref;
+  }
+
+  displayNameLabel() {
     const { metadata: { label, id } } = this.props;
     const data = Object.assign({}, label, { id });
     return (
       <LabelDesigner
         metadata={ data }
-        ref={ this.storeLabelRef }
+        ref={ this.storeNameLabelRef }
+        showDeleteButton={ false }
+      />
+    );
+  }
+
+  displayUrlLabel() {
+    const { metadata: { link, id } } = this.props;
+    const data = Object.assign({}, link, { id });
+    return (
+      <LabelDesigner
+        metadata={ data }
+        ref={ this.storeUrlLabelRef }
         showDeleteButton={ false }
       />
     );
@@ -67,13 +86,14 @@ export class ImageViewDesigner extends Component {
           }}
         >
           {this.showDeleteButton()}
-          {this.displayLabel()}
+          {this.displayNameLabel()}
+          {this.displayUrlLabel()}
         </div>
     );
   }
 }
 
-ImageViewDesigner.propTypes = {
+LinkDesigner.propTypes = {
   clearSelectedControl: PropTypes.func.isRequired,
   deleteControl: PropTypes.func.isRequired,
   dispatch: PropTypes.func,
@@ -95,9 +115,9 @@ ImageViewDesigner.propTypes = {
 };
 
 const descriptor = {
-  control: ImageViewDesigner,
+  control: LinkDesigner,
   designProperties: {
-    displayName: 'Image View',
+    displayName: 'Link',
     isTopLevelComponent: true,
   },
   metadata: {
@@ -105,12 +125,12 @@ const descriptor = {
       {
         name: 'type',
         dataType: 'text',
-        defaultValue: 'imageView',
+        defaultValue: 'link',
       },
       {
         name: 'value',
         dataType: 'text',
-        defaultValue: 'ImageView',
+        defaultValue: 'link',
       },
       {
         name: 'label',
@@ -124,33 +144,23 @@ const descriptor = {
           {
             name: 'value',
             dataType: 'text',
-            defaultValue: 'ImageView',
+            defaultValue: 'name',
           },
         ],
       },
       {
-        name: 'properties',
+        name: 'link',
         dataType: 'complex',
         attributes: [
           {
-            name: 'position',
-            elementType: 'dropdown',
-            defaultValue: 'left',
-            options: [
-              'left',
-              'center',
-              'right',
-            ],
+            name: 'type',
+            dataType: 'text',
+            defaultValue: 'label',
           },
           {
-            name: 'maxWidth',
-            elementType: 'number',
-            defaultValue: 100,
-          },
-          {
-            name: 'maxHeight',
-            elementType: 'number',
-            defaultValue: 100,
+            name: 'value',
+            dataType: 'text',
+            defaultValue: 'url',
           },
         ],
       },
@@ -158,4 +168,4 @@ const descriptor = {
   },
 };
 
-ComponentStore.registerDesignerComponent('imageView', descriptor);
+ComponentStore.registerDesignerComponent('link', descriptor);
